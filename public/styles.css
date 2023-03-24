@@ -1,0 +1,23 @@
+.header {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin: auto;
+  width: 40%;
+}
+.container {
+  width: 700px;
+  height: 700px;
+  margin: auto;
+  /*padding: 50px;*/
+  border: 3px solid black;
+  display: grid;
+  grid-gap: 0px;
+  grid-template-rows: repeat(var(--grid-rows), auto);
+  grid-template-columns: repeat(var(--grid-cols), auto);
+}
+
+.grid-item {
+  border: solid 0.5px black;
+  text-align: center;
+}
