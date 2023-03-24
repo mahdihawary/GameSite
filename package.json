@@ -1,6 +1,6 @@
 {
   "name": "gamesite",
-  "homepage": "https://mahdihawary.github.io/picker",
+  "homepage": "https://mahdihawary.github.io/GameSite",
   "version": "1.0.0",
   "description": "Single page app that allows users to play different games",
   "main": "index.js",
