@@ -1,13 +1,19 @@
 {
   "name": "gamesite",
+  "homepage": "https://mahdihawary.github.io/picker",
   "version": "1.0.0",
   "description": "Single page app that allows users to play different games",
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
 }
