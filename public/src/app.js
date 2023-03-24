@@ -114,8 +114,7 @@ const sketch = () => {
   recolor();
   addEvent();
 };
-const Snake = () => {
-  console.log("insnake");
+const snake = () => {
   const grid = document.querySelector(".grid");
   console.log(grid);
   const gridCtx = grid.getContext("2d");
@@ -127,7 +126,7 @@ const Snake = () => {
   const snakeBorder = "darkblue";
   let foox;
   let fooy;
-
+  const startBtn = document.querySelector(".start");
   let dx = 10;
 
   let dy = 0;
@@ -141,8 +140,11 @@ const Snake = () => {
     { x: 160, y: 200 },
   ];
 
-  main();
-  genFood();
+  startBtn.addEventListener("click", (e) => {
+    main();
+    genFood();
+  });
+
   document.addEventListener("keydown", changeDirection);
 
   function main() {
@@ -255,7 +257,7 @@ const Snake = () => {
   }
 };
 
-const sketchHTML = `<div class="sketch-container">
+const sketchHTML = `<div class="game-container">
         <div class="size-container">
           <button class="resize">small</button>
           <button class="resize" id="medium">medium</button>
@@ -268,6 +270,14 @@ const sketchHTML = `<div class="sketch-container">
         <div class="container"></div>
       </div>`;
 
+const snakeHTML = ` <div class="game-container">
+      <h1 class="title">Snake Game</h1>
+      <button class="start">start</button>
+      <div class="score-card"></div>
+      <h3 class="Score">0</h3>
+      <canvas class="grid" width="400" height="400"></canvas>
+    </div>`;
+
 const gamebuttons = document.querySelectorAll(".game-button");
 
 sketch();
@@ -275,10 +285,12 @@ sketch();
 gamebuttons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     if (btn.id === "sketch") {
+      document.querySelector(".game-container").remove();
       document.querySelector(".game").innerHTML = sketchHTML;
       sketch();
     } else if (btn.id === "snake") {
-      document.querySelector(".sketch-container").remove();
+      document.querySelector(".game-container").remove();
+      document.querySelector(".game").innerHTML = snakeHTML;
       snake();
     }
   });
