@@ -119,10 +119,11 @@ const snake = () => {
   console.log(grid);
   const gridCtx = grid.getContext("2d");
   console.log(gridCtx);
+  const restartBttn = document.querySelector(".restart");
 
   const boardBorder = "black";
   const boardBackground = "white";
-  const snakeCol = "lightblue";
+  const snakeCol = "green";
   const snakeBorder = "darkblue";
   let foox;
   let fooy;
@@ -142,6 +143,11 @@ const snake = () => {
 
   startBtn.addEventListener("click", (e) => {
     main();
+    genFood();
+  });
+
+  restartBttn.addEventListener("click", (e) => {
+    restart();
     genFood();
   });
 
@@ -167,7 +173,7 @@ const snake = () => {
   }
 
   function drawSnakePart(snakePart) {
-    gridCtx.fillStyle = "lightblue";
+    gridCtx.fillStyle = "green";
     gridCtx.strokestyle = "darkblue";
     gridCtx.fillRect(snakePart.x, snakePart.y, 10, 10);
     gridCtx.strokeRect(snakePart.x, snakePart.y, 10, 10);
@@ -250,11 +256,27 @@ const snake = () => {
   }
 
   function drawFood() {
-    gridCtx.fillStyle = "lightgreen";
-    gridCtx.strokestyle = "darkgreen";
+    gridCtx.fillStyle = "red";
+    gridCtx.strokestyle = "darkred";
     gridCtx.fillRect(foox, fooy, 10, 10);
     gridCtx.strokeRect(foox, fooy, 10, 10);
   }
+
+  const restart = () => {
+    snake = [
+      { x: 200, y: 200 },
+      { x: 190, y: 200 },
+      { x: 180, y: 200 },
+      { x: 170, y: 200 },
+      { x: 160, y: 200 },
+    ];
+    clearBoard();
+
+    drawFood();
+    moveSnake();
+    drawSnake();
+    main();
+  };
 };
 
 const sketchHTML = `<div class="game-container">
@@ -276,6 +298,7 @@ const sketchHTML = `<div class="game-container">
 const snakeHTML = ` <div class="game-container">
       <h1 class="title">Snake Game</h1>
       <button class="start">start</button>
+      <button class="restart">Restart</button>
       <div class="score-card"></div>
       <h3 class="Score">Score: 0</h3>
       <canvas class="grid" width="400" height="400"></canvas>
